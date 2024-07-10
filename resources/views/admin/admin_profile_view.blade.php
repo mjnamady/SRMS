@@ -29,14 +29,14 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
-                    <input class="form-control" name="name" type="text" placeholder="Username">
+                    <input class="form-control" name="name" type="text" value="{{$adminData->name}}">
                 </div>
             </div>
             <!-- end row -->
             <div class="row mb-3">
                 <label for="example-search-input" class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input class="form-control" name="email" type="email" placeholder="Email">
+                    <input class="form-control" name="email" type="email" value="{{$adminData->email}}">
                 </div>
             </div>
             <!-- end row -->
@@ -47,6 +47,16 @@
                 </div>
             </div>
             <!-- end row -->
+
+             <!-- end row -->
+             <div class="row mb-3">
+                <label for="example-email-input" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                    <img src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="avatar-4" class="rounded avatar-md">
+                </div>
+            </div>
+
+            
 
             <button type="button" class="btn btn-primary waves-effect waves-light">Update Profile</button>
         </div>
