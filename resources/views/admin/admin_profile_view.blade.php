@@ -26,6 +26,8 @@
         <div class="card-body">
 
             <h4 class="card-title">ADMIN PROFILE - Update</h4>
+        <form action="{{route('admin.profile.update')}}" method="POST" enctype="multipart/form-data">
+            @csrf
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Username</label>
                 <div class="col-sm-10">
@@ -43,7 +45,7 @@
             <div class="row mb-3">
                 <label for="example-email-input" class="col-sm-2 col-form-label">Photo</label>
                 <div class="col-sm-10">
-                    <input type="file" class="form-control" id="Image" >
+                    <input type="file" class="form-control" name="photo" id="Image" >
                 </div>
             </div>
             <!-- end row -->
@@ -52,13 +54,12 @@
              <div class="row mb-3">
                 <label for="example-email-input" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                    <img id="ShowImage" src="{{asset('backend/assets/images/users/avatar-4.jpg')}}" alt="avatar-4" class="rounded avatar-md">
+                    <img id="ShowImage" src="{{ empty($adminData->photo)? asset('uploads/no_image.png') : asset('uploads/admin_profiles/'.$adminData->photo) }}" alt="avatar-4" class="rounded avatar-md">
                 </div>
             </div>
 
-            
-
-            <button type="button" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Profile</button>
+        </form>
         </div>
     </div>
 </div>
