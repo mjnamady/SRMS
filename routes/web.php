@@ -29,6 +29,7 @@ Route::controller(ClassesController::class)->group(function(){
     Route::get('manage/classes', 'ManageClasses')->name('manage.classes');
     Route::get('edit/class/{id}', 'EditClass')->name('edit.class');
     Route::post('update/class', 'UpdateClass')->name('update.class');
+    Route::get('delete/class/{id}', 'DeleteClass')->name('delete.class');
 });
 
 Route::middleware('auth')->group(function () {
