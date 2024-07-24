@@ -26,7 +26,7 @@
         <div class="card-body">
 
             <h4 class="card-title">Create Student Class</h4>
-        <form action="{{route('admin.password.update')}}" method="POST">
+        <form action="{{route('store.class')}}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Class Name</label>

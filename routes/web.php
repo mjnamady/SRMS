@@ -25,6 +25,7 @@ Route::controller(AdminController::class)->group(function(){
 // CLASSES ALL ROUTES
 Route::controller(ClassesController::class)->group(function(){
     Route::get('create/class', 'CreateClass')->name('create.class');
+    Route::post('store/class', 'StoreClass')->name('store.class');
 });
 
 Route::middleware('auth')->group(function () {
