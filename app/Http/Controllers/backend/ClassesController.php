@@ -23,11 +23,31 @@ class ClassesController extends Controller
             'alert-type' => 'info'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.classes')->with($notification);
     } // end method
 
     public function ManageClasses(){
         $classes = classes::all();
         return view('backend.class.manage_classes_view', compact('classes'));
+    } // end method
+
+    public function EditClass($id){
+        $class = classes::find($id);
+        return view('backend.class.edit_class_view', compact('class'));
+    } // end method
+
+    public function UpdateClass(Request $request){
+        $id = $request->id;
+        classes::find($id)->update([
+            'class_name' => $request->class_name,
+            'section' => $request->section
+        ]);
+
+        $notification = array(
+            'message' => 'Student Class Updated Successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('manage.classes')->with($notification);
     } // end method
 }
