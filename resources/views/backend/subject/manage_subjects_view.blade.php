@@ -48,7 +48,7 @@
                     <td>{{  $subject->updated_at }}</td>
                     <td style="text-align: center; font-size: 20px">
                         <a href="{{route('edit.subject', $subject->id)}}" style="color: #444; margin-right: 30px"><i class="fas fa-edit"></i></a>
-                        <a href="{{route('delete.class', $subject->id)}}" id="delete" style="color: #444"><i class="fas fa-trash-alt"></i></a>
+                        <a href="{{route('delete.subject', $subject->id)}}" id="delete" style="color: #444"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>
             @endforeach

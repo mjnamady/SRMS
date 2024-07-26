@@ -40,6 +40,7 @@ Route::controller(SubjectController::class)->group(function(){
     Route::get('manage/subjects', 'ManageSubjects')->name('manage.subjects');
     Route::get('edit/subject/{id}', 'EditSubject')->name('edit.subject');
     Route::post('update/subject', 'UpdateSubject')->name('update.subject');
+    Route::get('delete/subject/{id}', 'DeleteSubject')->name('delete.subject');
 });
 
 Route::middleware('auth')->group(function () {

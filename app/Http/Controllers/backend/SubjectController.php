@@ -50,4 +50,14 @@ class SubjectController extends Controller
 
         return redirect()->route('manage.subjects')->with($notification);
     } // End method
+
+    public function DeleteSubject($id){
+        Subject::find($id)->delete();
+        $notification = array(
+            'message' => 'Subject Deleted Successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('manage.subjects')->with($notification);
+    } // End method
 }
