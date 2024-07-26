@@ -26,7 +26,7 @@
         <div class="card-body">
 
             <h4 class="card-title">Create Subject</h4>
-        <form action="{{route('store.class')}}" method="POST">
+        <form action="{{route('store.subject')}}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Subject Name</label>
