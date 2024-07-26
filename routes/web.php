@@ -4,6 +4,7 @@ use App\Http\Controllers\backend\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\ClassesController;
+use App\Http\Controllers\backend\SubjectController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -30,6 +31,11 @@ Route::controller(ClassesController::class)->group(function(){
     Route::get('edit/class/{id}', 'EditClass')->name('edit.class');
     Route::post('update/class', 'UpdateClass')->name('update.class');
     Route::get('delete/class/{id}', 'DeleteClass')->name('delete.class');
+});
+
+// SUBJECTS ALL ROUTES
+Route::controller(SubjectController::class)->group(function(){
+    Route::get('create/subject', 'CreateSubject')->name('create.subject');
 });
 
 Route::middleware('auth')->group(function () {
