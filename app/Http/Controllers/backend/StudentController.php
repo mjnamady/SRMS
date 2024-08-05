@@ -37,7 +37,7 @@ class StudentController extends Controller
             'alert-type' => 'info'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.students')->with($notification);
     } // End method
 
     public function ManageStudent(){
@@ -49,5 +49,33 @@ class StudentController extends Controller
         $student = Student::find($id);
         $classes = classes::all();
         return view('backend.student.edit_student_view', compact('student', 'classes'));
+    } // End method
+
+    public function UpdateStudent(Request $request){
+        $id = $request->id;
+        $student = Student::find($id);
+        $student->name = $request->full_name;
+        $student->email = $request->email;
+        $student->roll_id = $request->roll_id;
+        $student->class_id = $request->class_id;
+        $student->dob = $request->dob;
+        $student->gender = $request->gender;
+
+        if($request->hasFile('photo')){
+            $file = $request->file('photo');
+            @unlink(public_path('uploads/student_photos/'.$student->photo));
+            $imageName = date('YmdHi').'.'.$file->getClientOriginalName(); // 20240202.admin.png
+            $file->move(public_path('uploads/student_photos'), $imageName);
+            $student['photo'] = $imageName;
+        }
+
+        $student->save();
+
+        $notification = array(
+            'message' => 'Student Updated Successfully!',
+            'alert-type' => 'info'
+        );
+
+        return redirect()->route('manage.students')->with($notification);
     } // End method
 }
