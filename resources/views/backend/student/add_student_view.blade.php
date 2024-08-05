@@ -26,7 +26,7 @@
         <div class="card-body">
 
             <h4 class="card-title">Fill Student Info</h4>
-        <form action="{{route('store.subject')}}" method="POST">
+        <form action="{{route('store.student')}}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Full Name</label>
