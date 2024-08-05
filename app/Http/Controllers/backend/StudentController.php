@@ -43,5 +43,11 @@ class StudentController extends Controller
     public function ManageStudent(){
         $students = Student::all();
         return view('backend.student.manage_student_view', compact('students'));
-    }
+    } // End method
+
+    public function EditStudent($id){
+        $student = Student::find($id);
+        $classes = classes::all();
+        return view('backend.student.edit_student_view', compact('student', 'classes'));
+    } // End method
 }
