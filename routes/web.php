@@ -55,6 +55,7 @@ Route::controller(SubjectController::class)->group(function(){
 Route::controller(StudentController::class)->group(function(){
     Route::get('add/student', 'AddStudent')->name('add.student');
     Route::post('store/student', 'StoreStudent')->name('store.student');
+    Route::get('manage/students', 'ManageStudent')->name('manage.students');
 });
 
 Route::middleware('auth')->group(function () {

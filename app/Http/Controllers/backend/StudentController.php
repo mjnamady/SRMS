@@ -39,4 +39,9 @@ class StudentController extends Controller
 
         return redirect()->back()->with($notification);
     } // End method
+
+    public function ManageStudent(){
+        $students = Student::all();
+        return view('backend.student.manage_student_view', compact('students'));
+    }
 }
