@@ -58,6 +58,7 @@ Route::controller(StudentController::class)->group(function(){
     Route::get('manage/students', 'ManageStudent')->name('manage.students');
     Route::get('edit/student/{id}', 'EditStudent')->name('edit.student');
     Route::post('update/student', 'UpdateStudent')->name('update.student');
+    Route::get('delete/student/{id}', 'DeleteStudent')->name('delete.student');
 });
 
 Route::middleware('auth')->group(function () {
