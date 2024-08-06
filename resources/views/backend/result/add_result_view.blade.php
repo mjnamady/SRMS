@@ -52,16 +52,12 @@
             </div>
             <!-- end row -->
 
-            {{-- <div class="row mb-3">
+            <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                        <i class="mdi mdi-bullseye-arrow me-2"></i>
-                        This Student's Result is Already Declared!
-                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                    </div>
+                <div class="col-sm-10" id="alert">
+                    
                 </div>
-            </div> --}}
+            </div>
             <!-- end row -->
 
             <div class="row mb-3 showSubjects">
@@ -94,6 +90,19 @@
                     $('#student').html(result.students);
                     $('.sub').html(result.subjects);
                     $('.showSubjects').show();
+                }
+            });
+        });
+
+        $('#student').change(function (){
+            let student_id = $(this).val();
+            $.ajax({
+                url: "{{ route('check.student.result') }}",
+                method: "GET",
+                datatype: "json",
+                data: {student_id:student_id, _token:"{{csrf_token()}}"},
+                success: function(result){
+                    $('#alert').html(result);
                 }
             });
         });
