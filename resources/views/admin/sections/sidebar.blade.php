@@ -56,8 +56,6 @@
                         <li><a href="{{route('manage.subject.combination')}}">Manage Subject Combination</a></li>
                     </ul>
                 </li>
-
-
                 
                 <li>
                     <a href="javascript: void(0);" class="has-arrow waves-effect">
@@ -67,6 +65,18 @@
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('add.student')}}">Add Student</a></li>
                         <li><a href="{{route('manage.students')}}">Manage Students</a></li>
+                    </ul>
+                </li>
+
+
+                <li>
+                    <a href="javascript: void(0);" class="has-arrow waves-effect">
+                        <i class="ri-profile-line"></i>
+                        <span>Result</span>
+                    </a>
+                    <ul class="sub-menu" aria-expanded="false">
+                        <li><a href="{{route('add.result')}}">Add Result </a></li>
+        
                     </ul>
                 </li>
 

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\backend\ClassesController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\StudentController;
+use App\Http\Controllers\backend\ResultController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -51,7 +52,7 @@ Route::controller(SubjectController::class)->group(function(){
 });
 
 
-// CLASSES ALL ROUTES
+// STUDENTS ALL ROUTES
 Route::controller(StudentController::class)->group(function(){
     Route::get('add/student', 'AddStudent')->name('add.student');
     Route::post('store/student', 'StoreStudent')->name('store.student');
@@ -59,6 +60,12 @@ Route::controller(StudentController::class)->group(function(){
     Route::get('edit/student/{id}', 'EditStudent')->name('edit.student');
     Route::post('update/student', 'UpdateStudent')->name('update.student');
     Route::get('delete/student/{id}', 'DeleteStudent')->name('delete.student');
+});
+
+// RESULTS ALL ROUTES
+Route::controller(ResultController::class)->group(function(){
+    Route::get('add/result', 'AddResult')->name('add.result');
+   
 });
 
 Route::middleware('auth')->group(function () {
