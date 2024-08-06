@@ -26,7 +26,7 @@
         <div class="card-body">
 
             <h4 class="card-title">Declare Student Result</h4>
-        <form action="{{route('store.subject')}}" method="POST">
+        <form action="{{route('store.result')}}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Class</label>
@@ -44,7 +44,7 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Student Name</label>
                 <div class="col-sm-10">
-                    <select name="class_id" class="form-select" id="student">
+                    <select name="student_id" class="form-select" id="student">
                         <option selected="">-- Select a Student --</option>
                     
                     </select>
