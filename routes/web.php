@@ -65,6 +65,9 @@ Route::controller(StudentController::class)->group(function(){
 // RESULTS ALL ROUTES
 Route::controller(ResultController::class)->group(function(){
     Route::get('add/result', 'AddResult')->name('add.result');
+
+    // ajax request all routes
+    Route::get('fetch/student', 'FetchStudent')->name('fetch.student');
    
 });
 

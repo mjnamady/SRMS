@@ -31,7 +31,7 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Class</label>
                 <div class="col-sm-10">
-                    <select name="class_id" class="form-select" aria-label="Default select example">
+                    <select name="class_id" class="form-select dynamic" data-dependant="student">
                         <option selected="">-- Select a Class --</option>
                         @foreach($classes as $class)
                             <option value="{{ $class->id }}">{{ $class->class_name }}</option>
@@ -44,7 +44,7 @@
             <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Student Name</label>
                 <div class="col-sm-10">
-                    <select name="class_id" class="form-select" aria-label="Default select example">
+                    <select name="class_id" class="form-select" id="student">
                         <option selected="">-- Select a Student --</option>
                     
                     </select>
@@ -52,7 +52,7 @@
             </div>
             <!-- end row -->
 
-            <div class="row mb-3">
+            {{-- <div class="row mb-3">
                 <label for="example-text-input" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
                     <div class="alert alert-primary alert-dismissible fade show" role="alert">
@@ -61,14 +61,13 @@
                         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- end row -->
 
-            <div class="row mb-3">
+            <div class="row mb-3 showSubjects">
                 <label for="example-text-input" class="col-sm-2 col-form-label">Subjects</label>
-                <div class="col-sm-10">
-                    <label for="english">English</label>
-                    <input class="form-control" name="marks[]" required type="text" placeholder="Enter mark out of 100">
+                <div class="col-sm-10 sub">
+                   
                 </div>
             </div>
             <!-- end row -->
@@ -78,5 +77,27 @@
         </div>
     </div>
 </div>
+
+<script>
+    $(document).ready(function(){
+        $('.showSubjects').hide();
+        $('.dynamic').on('change', function (){
+            let class_id = $(this).val();
+            let dependant = $(this).data('dependant');
+            let _token = "{{ csrf_token() }}";
+            $.ajax({
+                url: "{{ route('fetch.student') }}",
+                method: "GET",
+                datatype: "json",
+                data: {class_id:class_id, _token:_token},
+                success: function (result){
+                    $('#student').html(result.students);
+                    $('.sub').html(result.subjects);
+                    $('.showSubjects').show();
+                }
+            });
+        });
+    });
+</script>
 
 @endsection
