@@ -69,4 +69,9 @@ class ResultController extends Controller
 
         return redirect()->back()->with($notification);
     } // End method
+
+    public function ManageResult(){
+        $results = Result::groupBy('student_id')->get();
+        return view('backend.result.manage_result', compact('results'));
+    } // End method
 }

@@ -76,7 +76,7 @@
                     </a>
                     <ul class="sub-menu" aria-expanded="false">
                         <li><a href="{{route('add.result')}}">Add Result </a></li>
-        
+                        <li><a href="{{route('manage.results')}}">Manage Results </a></li>
                     </ul>
                 </li>
 
