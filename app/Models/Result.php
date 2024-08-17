@@ -15,4 +15,9 @@ class Result extends Model
     {
         return $this->belongsTo(Student::class, 'student_id', 'id');
     }
+
+    public function subject(): BelongsTo
+    {
+        return $this->belongsTo(Subject::class);
+    }
 }

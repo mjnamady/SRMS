@@ -50,7 +50,7 @@
                     <td>{{  $result->student->class->class_name }}</td>
                     <td>{{  $result->created_at }}</td>
                     <td style="text-align: center; font-size: 20px">
-                        <a href="{{route('edit.student', $result->student->id)}}" style="color: #444; margin-right: 30px"><i class="fas fa-edit"></i></a>
+                        <a href="{{route('edit.result', $result->student->id)}}" style="color: #444; margin-right: 30px"><i class="fas fa-edit"></i></a>
                         <a href="{{route('delete.student', $result->student->id)}}" id="delete" style="color: #444"><i class="fas fa-trash-alt"></i></a>
                     </td>
                 </tr>

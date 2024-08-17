@@ -74,4 +74,9 @@ class ResultController extends Controller
         $results = Result::groupBy('student_id')->get();
         return view('backend.result.manage_result', compact('results'));
     } // End method
+
+    public function EditResult($id){
+        $result = Result::where('student_id', $id)->get();
+        return view('backend.result.edit_result', compact('result'));
+    } // End method
 }

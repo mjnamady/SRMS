@@ -67,6 +67,7 @@ Route::controller(ResultController::class)->group(function(){
     Route::get('add/result', 'AddResult')->name('add.result');
     Route::post('store/result', 'StoreResult')->name('store.result');
     Route::get('manage/results', 'ManageResult')->name('manage.results');
+    Route::get('edit/result/{id}', 'EditResult')->name('edit.result');
 
     // ajax request all routes
     Route::get('fetch/student', 'FetchStudent')->name('fetch.student');
