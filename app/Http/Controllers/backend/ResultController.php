@@ -79,4 +79,21 @@ class ResultController extends Controller
         $result = Result::where('student_id', $id)->get();
         return view('backend.result.edit_result', compact('result'));
     } // End method
+
+    public function UpdateResult(Request $request){
+        $sub_count = count($request->subject_ids);
+        for ($i=0; $i < $sub_count; $i++) { 
+            $result = Result::where('id',$request->result_ids[$i])->update([
+                'subject_id' => $request->subject_ids[$i],
+                'marks' => $request->marks[$i]
+            ]);
+        }
+
+        $notification = array(
+            'message' => 'Result Updated Successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    } // End method
 }

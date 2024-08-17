@@ -26,7 +26,7 @@
         <div class="card-body">
 
             <h4 class="card-title">Update Student Result</h4>
-        <form action="{{route('store.result')}}" method="POST">
+        <form action="{{route('update.result')}}" method="POST">
             @csrf
             <div class="row mb-3">
                 <label style="text-align: right" class="col-sm-2 col-form-label">Student Name</label>
@@ -55,6 +55,7 @@
                 <div class="col-sm-10 sub">
                    @for ($i = 0; $i < $count; $i++)
                    <label for="{{ $result[$i]->subject->subject_name }}">{{ $result[$i]->subject->subject_name }}</label>
+                   <input class="form-control" name="result_ids[]" type="hidden" value="{{ $result[$i]->id }}" >
                    <input class="form-control" name="subject_ids[]" type="hidden" value="{{ $result[$i]->subject->id }}" >
                     <input class="form-control" name="marks[]" required type="text" placeholder="Enter mark out of 100" value="{{ $result[$i]->marks }}">
                    @endfor
@@ -62,7 +63,7 @@
             </div>
             <!-- end row -->
 
-            <button type="submit" class="btn btn-primary waves-effect waves-light">Declare Result</button>
+            <button type="submit" class="btn btn-primary waves-effect waves-light">Update Result</button>
         </form>
         </div>
     </div>
