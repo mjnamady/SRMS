@@ -6,6 +6,7 @@ use App\Models\classes;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Student;
+use App\Models\Result;
 
 class StudentController extends Controller
 {
@@ -82,6 +83,7 @@ class StudentController extends Controller
     public function DeleteStudent($id){
         $student = Student::find($id);
         @unlink(public_path('uploads/student_photos/'.$student->photo));
+        Result::where('student_id', $student->id);
         $student->delete();
         $notification = array(
             'message' => 'Student Deleted Successfully!',

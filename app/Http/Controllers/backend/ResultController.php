@@ -67,7 +67,7 @@ class ResultController extends Controller
             'alert-type' => 'success'
         );
 
-        return redirect()->back()->with($notification);
+        return redirect()->route('manage.results')->with($notification);
     } // End method
 
     public function ManageResult(){
@@ -91,6 +91,20 @@ class ResultController extends Controller
 
         $notification = array(
             'message' => 'Result Updated Successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->back()->with($notification);
+    } // End method
+
+    public function DeleteResult($id){
+        $result = Result::where('student_id', $id)->get();
+        for ($i=0; $i < count($result); $i++) { 
+            $result[$i]->delete();
+        }
+
+        $notification = array(
+            'message' => 'Result Deleted Successfully!',
             'alert-type' => 'success'
         );
 
