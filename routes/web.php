@@ -7,10 +7,9 @@ use App\Http\Controllers\backend\ClassesController;
 use App\Http\Controllers\backend\SubjectController;
 use App\Http\Controllers\backend\StudentController;
 use App\Http\Controllers\backend\ResultController;
+use App\Http\Controllers\frontend\StudentResultController;
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [StudentResultController::class, 'index'])->name('index');
 
 Route::get('/dashboard', function () {
     return view('admin.index');
