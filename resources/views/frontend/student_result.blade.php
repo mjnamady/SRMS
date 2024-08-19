@@ -88,9 +88,10 @@
     </div>
     <div class="card-container">
         <div class="card-header">
-            <div><strong>Student Name : </strong>  </div>
-            <div><strong>Roll ID : </strong>  </div>
-            <div><strong>Class : </strong> </div>
+            <div><strong>Student Name : </strong> {{ $result[0]->student->name }} </div>
+            <div><strong>Roll ID : </strong> {{ $result[0]->student->roll_id }} </div>
+            <div><strong>Class : </strong> {{ $result[0]->student->class->class_name }} 
+                (Section - {{ $result[0]->student->class->section }} )</div>
         </div>
         <div class="card-body">
             <table class="table table-bordered table-hover">
@@ -103,20 +104,27 @@
                 </thead>
                 <tbody>
 
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                    @foreach ($result as $key => $item)
+                        <tr>
+                            <td>{{ $key+1 }}</td>
+                            <td>{{ $item->subject->subject_name }}</td>
+                            <td>{{ $item->marks }}</td>
+                        </tr>
+                    @endforeach
+
+                    @php
+                        $total_mark_obtain = App\Models\Result::where('student_id', $result[0]->student->id)->sum('marks');
+                        $overall_marks = (100 * count($result));
+                    @endphp
                   
                     <tr>
                         <td colspan="2" class="text-right"><strong>Total Marks</strong></td>
-                        <td> </td>
+                        <td> {{ $total_mark_obtain }} Out of {{ $overall_marks }} </td>
                     </tr>
 
                     <tr>
                         <td colspan="2" class="text-right"><strong>Percentage</strong></td>
-                        <td></td>
+                        <td> {{ ($total_mark_obtain/$overall_marks) * 100 }}% </td>
                     </tr>
 
                     <tr>
