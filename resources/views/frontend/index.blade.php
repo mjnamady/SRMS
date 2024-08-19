@@ -62,7 +62,8 @@
                 <h2>Student Result Management System (SRMS)</h2>
                 <p class="card-title-desc">Find your result by simply providing the inputs below</p>
 
-                <form method="POST" action="">
+                <form method="POST" action="{{route('search.result')}}">
+                    @csrf
                     <div class="mb-3">
                         <label>Student Roll ID</label>
                         <div>

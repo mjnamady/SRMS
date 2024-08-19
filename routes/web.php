@@ -10,6 +10,10 @@ use App\Http\Controllers\backend\ResultController;
 use App\Http\Controllers\frontend\StudentResultController;
 
 Route::get('/', [StudentResultController::class, 'index'])->name('index');
+Route::post('search/result', [StudentResultController::class, 'SearchResult'])->name('search.result');
+
+// START AUTH MIDDLEWARE
+Route::middleware('auth')->group(function(){
 
 Route::get('/dashboard', function () {
     return view('admin.index');
@@ -75,6 +79,8 @@ Route::controller(ResultController::class)->group(function(){
     Route::get('fetch/student/result', 'FetchStudentResult')->name('check.student.result');
    
 });
+
+}); // END AUTH MIDDLEWARE
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
