@@ -83,7 +83,7 @@ class StudentController extends Controller
     public function DeleteStudent($id){
         $student = Student::find($id);
         @unlink(public_path('uploads/student_photos/'.$student->photo));
-        Result::where('student_id', $student->id);
+        Result::where('student_id', $student->id)->delete();
         $student->delete();
         $notification = array(
             'message' => 'Student Deleted Successfully!',
